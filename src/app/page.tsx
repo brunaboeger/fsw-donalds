@@ -9,7 +9,7 @@ const HomePage = async () => {
   const restaurants = await db.restaurant.findMany();
 
   return (
-    <div className="p-14 h-screen">
+    <div className="p-5 h-screen">
       <div className="mb-10">
         <h1 className="mb-2 text-3xl font-medium">Restaurantes</h1>
         <p className="text-gray-500">Encontrados: {restaurants.length}</p>
