@@ -8,7 +8,7 @@ export default function RootLayout({
   return (
     <div className="relative">
       <NavigationHeader />
-      <div>{children}</div>
+      <div className="flex flex-col">{children}</div>
     </div>
   );
 }
