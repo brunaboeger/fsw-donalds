@@ -15,7 +15,7 @@ interface ConsumptionMethodOptionProps {
 
 const ConsumptionMethodOption = ({ imageUrl, imageAlt, buttonText, option, slug }: ConsumptionMethodOptionProps) => {
   return (
-    <Card>
+    <Card className="hover:bg-gray-100 transition-all">
       <CardContent className="flex flex-col items-center gap-8 py-8">
         <div className="relative h-[80px] w-[80px]">
           <Image

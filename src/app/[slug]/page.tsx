@@ -1,4 +1,5 @@
 // import { getRestaurantBySlug } from "@/data/get-restaurant-by-slug";
+import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -22,7 +23,16 @@ const RestaurantPage = async ({ params }: RestaurantPageProps) => {
   }
 
   return (
-    <div className="flex h-screen flex-col items-center px-6 pt-24">
+    <div className="relative flex h-screen flex-col items-center px-6 pt-24">
+      {/* BOTÃO DE VOLTAR */}
+      <div className="absolute top-4 left-4">
+        <Button className="rounded-full" size="icon" asChild>
+          <Link href="/">
+            <ChevronLeft />
+          </Link>
+        </Button>
+      </div>
+
       {/* LOGO E TÍTULO */}
       <div className="flex flex-col items-center gap-2">
         <Image
@@ -59,14 +69,6 @@ const RestaurantPage = async ({ params }: RestaurantPageProps) => {
           imageAlt="Para levar"
           buttonText="Para levar"
         />
-      </div>
-
-      <div className="mt-14">
-        <Button asChild>
-          <Link href="/">
-            Voltar
-          </Link>
-        </Button>
       </div>
     </div>
   );
