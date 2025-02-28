@@ -30,8 +30,36 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   const addProduct = (product: CartProduct) => {
-    setProducts((prev) => [...prev, product]);
-    console.log(product);
+    /* 
+      1. Verifica se o produto está no carrinho
+      2. Se estiver, aumenta a quantidade
+      3. Se não estiver, adiciona o produto ao carrinho
+    */
+    const productIsAlreadyOnCart = products.some(prevProduct => prevProduct.id === product.id);
+
+    if (!productIsAlreadyOnCart) {
+      return setProducts((prev) => [...prev, product]);
+    }
+
+    /*
+      Para cada produto do carrinho, verifica se o id dele é igual ao id do produto que estamos adicionando.
+      Se for igual, aumenta a quantidade do produto no carrinho.
+      Se não for, não faz nada.
+      prevProduct é o produto atual do carrinho.
+      product é o produto que está sendo adicionado ao carrinho.
+    */
+
+    setProducts(prevProducts => {
+      return prevProducts.map(prevProduct => {
+        if (prevProduct.id === product.id) {
+          return {
+            ...prevProduct,
+            quantity: prevProduct.quantity + product.quantity
+          }
+        }
+        return prevProduct;
+      })
+    })
   }
 
   return (
