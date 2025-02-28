@@ -29,7 +29,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   const restaurant = product.restaurant;
   const [quantity, setQuantity] = useState<number>(1);
   const [price, setPrice] = useState(product.price);
-  const { toggleCart } = useContext(CartContext);
+  const { toggleCart, addProduct } = useContext(CartContext);
 
   const handleQuantity = (action: "increment" | "decrement") => {
     if (action === "increment") {
@@ -42,6 +42,10 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   }
 
   const handleAddToCart = () => {
+    addProduct({
+      ...product,
+      quantity
+    });
     toggleCart();
   }
 
