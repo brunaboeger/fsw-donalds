@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} antialiased w-[450px] m-auto border`}>{children}</body>
+      <body className={`${poppins.className} flex flex-col antialiased w-[450px] m-auto border`}>{children}</body>
     </html>
   );
 }
