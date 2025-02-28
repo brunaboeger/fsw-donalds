@@ -12,7 +12,7 @@ const HomePage = async () => {
     <div className="p-5 h-screen">
       <div className="mb-10">
         <h1 className="mb-2 text-3xl font-medium">Restaurantes</h1>
-        <p className="text-gray-500">Encontrados: {restaurants.length}</p>
+        <p className="text-muted-foreground">Encontrados: {restaurants.length}</p>
       </div>
       <div>
         {restaurants.map((restaurant) => (

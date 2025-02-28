@@ -47,7 +47,7 @@ const RestaurantPage = async ({ params }: RestaurantPageProps) => {
       {/* BOAS VINDAS */}
       <div className="space-y-2 pt-16 text-center">
         <h3 className="text-2xl font-semibold">Boas vindas!</h3>
-        <p className="opacity-55">
+        <p className="text-muted-foreground">
           Escolha como prefere aproveitar sua refeição. Estamos aqui para
           oferecer praticidade e sabor em cada detalhe!
         </p>

@@ -24,7 +24,7 @@ const RestaurantProducts = ({ products }: ProductsProps) => {
           <div className="flex flex-col">
             <div className="flex flex-col">
               <h3 className="font-medium">{product.name}</h3>
-              <p className="text-gray-500 line-clamp-2">{product.description}</p>
+              <p className="text-muted-foreground line-clamp-2">{product.description}</p>
             </div>
             <p className="font-semibold mt-3">{formatCurrency(product.price)}</p>
           </div>

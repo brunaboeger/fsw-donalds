@@ -55,7 +55,7 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
             />
             <div className="ml-3">
               <h1 className="font-semibold text-lg">{restaurant.name}</h1>
-              <p className="text-sm text-gray-500">{restaurant.description}</p>
+              <p className="text-sm text-muted-foreground">{restaurant.description}</p>
             </div>
           </div>
           <Badge
