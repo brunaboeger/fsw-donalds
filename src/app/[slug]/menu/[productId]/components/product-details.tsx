@@ -1,7 +1,7 @@
 "use client";
 
 import { Prisma } from "@prisma/client";
-import { ChefHat, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChefHat } from "lucide-react";
 import Image from "next/image";
 import { useContext, useState } from "react";
 
@@ -11,6 +11,7 @@ import { formatCurrency } from "@/helpers/format-currency";
 
 import CartSheet from "../../components/cart-sheet";
 import { CartContext } from "../../context/cart";
+import ProductQuantity from "./product-quantity";
 
 interface ProductDetailsProps {
   product: Prisma.ProductGetPayload<{
@@ -31,14 +32,9 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   const [price, setPrice] = useState(product.price);
   const { toggleCart, addProduct } = useContext(CartContext);
 
-  const handleQuantity = (action: "increment" | "decrement") => {
-    if (action === "increment") {
-      setPrice(product.price * quantity + product.price);
-      setQuantity(quantity + 1);
-    } else if (action === "decrement" && quantity > 1) {
-      setQuantity(quantity - 1);
-      setPrice(product.price * quantity - product.price);
-    }
+  const handleQuantityChange = (newQuantity: number, newPrice: number) => {
+    setQuantity(newQuantity);
+    setPrice(newPrice);
   }
 
   const handleAddToCart = () => {
@@ -71,25 +67,8 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
               <h3 className="font-semibold text-xl">
                 {formatCurrency(price)}
               </h3>
-              <div className="flex items-center gap-2">
-                <Button
-                  onClick={() => handleQuantity("decrement")}
-                  variant="outline"
-                  size="icon"
-                  className="rounded-full"
-                >
-                  <ChevronLeft />
-                </Button>
-                <p className="w-4 text-center">{quantity}</p>
-                <Button
-                  onClick={() => handleQuantity("increment")}
-                  variant="destructive"
-                  size="icon"
-                  className="rounded-full"
-                >
-                  <ChevronRight />
-                </Button>
-              </div>
+
+              <ProductQuantity productPrice={product.price} onQuantityChange={handleQuantityChange} />
             </div>
           </div>
 
