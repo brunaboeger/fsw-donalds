@@ -6,9 +6,10 @@ import { Button } from "@/components/ui/button";
 interface ProductQuantityProps {
   productPrice: number;
   onQuantityChange: (quantity: number, price: number) => void;
+  buttonClass?: string;
 }
 
-const ProductQuantity = ({ productPrice, onQuantityChange }: ProductQuantityProps) => {
+const ProductQuantity = ({ productPrice, onQuantityChange, buttonClass }: ProductQuantityProps) => {
   const [quantity, setQuantity] = useState<number>(1);
 
   const handleQuantity = (action: "increment" | "decrement") => {
@@ -24,7 +25,7 @@ const ProductQuantity = ({ productPrice, onQuantityChange }: ProductQuantityProp
         onClick={() => handleQuantity("decrement")}
         variant="outline"
         size="icon"
-        className="rounded-full"
+        className={`rounded-full ${buttonClass}`}
       >
         <ChevronLeft />
       </Button>
@@ -33,7 +34,7 @@ const ProductQuantity = ({ productPrice, onQuantityChange }: ProductQuantityProp
         onClick={() => handleQuantity("increment")}
         variant="destructive"
         size="icon"
-        className="rounded-full"
+        className={`rounded-full ${buttonClass}`}
       >
         <ChevronRight />
       </Button>
